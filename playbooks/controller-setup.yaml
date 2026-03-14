@@ -1,0 +1,17 @@
+---
+- name:  Copy controller SSH Key to nodes
+  hosts: nodes 
+  become: true
+
+  vars:
+      ansible_user: ansadmin
+      ansible_password: admin123
+  
+  tasks:
+  
+  - name: Install controller public key 
+    ansible.posix.authorized_key:
+        user:  ansadmin
+        state: present
+        key: "{{ lookup('file', '/home/ansadmin/.ssh/id_rsa.pub') }}"
+
