@@ -1,6 +1,6 @@
 ---
 - name:  Copy controller SSH Key to nodes
-  hosts: nodes 
+  hosts: local 
   become: true
 
   vars:
